@@ -1,6 +1,7 @@
-from BasicWindow import Window
+from View.BasicWindow import Window
 from tkinter import ttk
 import tkinter as tk
+from Presenters.InformationPresenter import InformationContr
 
 
 class StatisticView(Window):
@@ -9,6 +10,7 @@ class StatisticView(Window):
         self.init_view_of_numbers()
 
     def init_view_of_numbers(self):
+        self.users_number, self.devices_numbers, self.advertising_numbers = InformationContr().give_list_of_numbers()
         width = 35
         height = 5
         bg = 'white'
@@ -25,13 +27,13 @@ class StatisticView(Window):
         number_of_advertising = tk.Label(self, text='Numbers of ads', width=width, height=height, bg=bg,
                                          borderwidth=brd, relief=rel)
         number_of_advertising.grid(row=3, column=0)
-        numbers_users = tk.Label(self, text='3', width=width, height=height, bg=bg,
+        numbers_users = tk.Label(self, text=str(self.users_number), width=width, height=height, bg=bg,
                                  borderwidth=brd, relief=rel)
         numbers_users.grid(row=1, column=1)
-        numbers_devices = tk.Label(self, text='1', width=width, height=height, bg=bg,
+        numbers_devices = tk.Label(self, text=str(self.devices_numbers), width=width, height=height, bg=bg,
                                    borderwidth=brd, relief=rel)
         numbers_devices.grid(row=2, column=1)
-        number_adv = tk.Label(self, text='2', width=width, height=height, bg=bg,
+        number_adv = tk.Label(self, text=str(self.advertising_numbers), width=width, height=height, bg=bg,
                               borderwidth=brd, relief=rel)
         number_adv.grid(row=3, column=1)
         close_button = ttk.Button(self, text='Close', command=self.destroy)

@@ -1,7 +1,6 @@
 from tkinter import ttk
-from BasicWindow import Window
-import Statistic
-import Monitoring
+from View.BasicWindow import Window
+from View import Statistic, Monitoring
 
 
 class ConfigureSystemView(Window):
